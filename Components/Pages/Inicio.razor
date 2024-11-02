@@ -1,9 +1,33 @@
 ﻿@page "/"
+@inject NavigationManager Navman
+@rendermode InteractiveServer
 
 <PageTitle>Inicio</PageTitle>
 
 <div>
     <center>
-        <h1>Visitas a la empresa</h1>
+        <h3>Visitas a la empresa</h3>
     </center>
 </div>
+<br>
+
+<p>Visitas agregadas</p>
+<table>
+
+</table>
+
+<div class="text-end">
+    <center>
+        <button type="button" @onclick = "AgregarNueva" class="btn btn-success">Agregar visita</button>
+    </center>
+</div>
+
+
+
+@code{
+
+    private void AgregarNueva(){
+
+        Navman.NavigateTo("/Agregarvisita");
+    }
+}
