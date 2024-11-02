@@ -130,3 +130,4 @@ C:\Web\Segundo parcial\TestP_2\obj\Debug\net8.0\refint\TestP_2.dll
 C:\Web\Segundo parcial\TestP_2\obj\Debug\net8.0\TestP_2.pdb
 C:\Web\Segundo parcial\TestP_2\obj\Debug\net8.0\TestP_2.genruntimeconfig.cache
 C:\Web\Segundo parcial\TestP_2\obj\Debug\net8.0\ref\TestP_2.dll
+C:\Web\Segundo parcial\TestP_2\obj\Debug\net8.0\TestP_2.sourcelink.json
