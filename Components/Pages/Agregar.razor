@@ -1,12 +1,14 @@
 @page "/Agregarvisita"
 @rendermode InteractiveServer
 @inject IJSRuntime JSx
+@inject NavigationManager Navman
+@inject VisitasDbContext Vc
 
 <PageTitle>Agregando visita...</PageTitle>
 
 <h3>Datos de la visita</h3>
 
-<EditForm Model="instancia" OnInvalidSubmit="GuardarDatos">
+<EditForm Model="instancia" OnValidSubmit="GuardarDatos">
     <DataAnnotationsValidator />
     <div class = "form-group">
         <label for = "Nombre">Nombre</label>
@@ -42,5 +44,9 @@
 
     async Task GuardarDatos(){
 
+        Vc.Visitas.Add(instancia);
+        await Vc.SaveChangesAsync();
+        await JSx.InvokeVoidAsync("alert", "Datos guardados");
+        Navman.NavigateTo("/");
     }
 }
