@@ -1,15 +1,46 @@
 @page "/Agregarvisita"
 @rendermode InteractiveServer
+@inject IJSRuntime JSx
 
 <PageTitle>Agregando visita...</PageTitle>
 
 <h3>Datos de la visita</h3>
+
+<EditForm Model="instancia" OnInvalidSubmit="GuardarDatos">
+    <DataAnnotationsValidator />
+    <div class = "form-group">
+        <label for = "Nombre">Nombre</label>
+        <InputText id = "nombre" class = "form-control" @bind-Value = "instancia.Nombre" />
+    </div>
+
+    <div class = "form-group">
+        <label for = "Apellido">Apellido</label>
+        <InputText id = "apellido" class = "form-control" @bind-Value = "instancia.Apellido" />
+    </div>
+
+    <div class = "form-group">
+        <label for = "Correo">Correo</label>
+        <InputText id = "correo" class = "form-control" @bind-Value = "instancia.Correo" />
+    </div>
+
+    <div class = "form-group">
+        <label for = "Telefono">Telefono</label>
+        <InputText id = "telefono" class = "form-control" @bind-Value = "instancia.Telefono" />
+    </div>
+
+    <br>
+    <div>
+        <center>
+            <button type="submit" class="btn btn-primary">Guardar visita</button>
+        </center>
+    </div>
+</EditForm>
 
 
 @code{
     Visitas instancia = new Visitas();
 
     async Task GuardarDatos(){
-        
+
     }
 }
