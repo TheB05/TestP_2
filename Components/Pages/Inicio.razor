@@ -1,6 +1,8 @@
 ﻿@page "/"
 @inject NavigationManager Navman
 @rendermode InteractiveServer
+@inject VisitasDbContext Vc
+@using Microsoft.EntityFrameworkCore;
 
 <PageTitle>Inicio</PageTitle>
 
@@ -12,8 +14,26 @@
 <br>
 
 <p>Visitas agregadas</p>
-<table>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Correo</th>
+            <th>Telefono</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in lista){
 
+            <tr>
+                <td>@item.Nombre</td>
+                <td>@item.Apellido</td>
+                <td>@item.Correo</td>
+                <td>@item.Telefono</td>
+            </tr>
+        }
+    </tbody>
 </table>
 
 <div class="text-end">
@@ -26,8 +46,19 @@
 
 @code{
 
+    List<Visitas> lista = new List<Visitas>();
+    
     private void AgregarNueva(){
 
         Navman.NavigateTo("/Agregarvisita");
     }
-}
+
+    protected override async Task OnAfterRenderAsync(bool firstRender){
+
+        if (firstRender){
+
+            lista = await Vc.Visitas.ToListAsync();
+            StateHasChanged();
+        }
+    }
+}    
